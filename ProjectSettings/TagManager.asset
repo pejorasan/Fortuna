@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Edges
+    uniqueID: 2802925007
+    locked: 0
+  - name: Floor
+    uniqueID: 337634933
+    locked: 0
+  - name: Wall
+    uniqueID: 1352658551
+    locked: 0
+  - name: Game Objects
+    uniqueID: 1770520137
+    locked: 0
