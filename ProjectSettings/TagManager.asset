@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bottom
+  - DownCheck
   layers:
   - Default
   - TransparentFX

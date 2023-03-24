@@ -13,7 +13,9 @@ public class BallController : MonoBehaviour
     public float speed;
     public float maxDrag = 5f;
     private bool isHit;
+    private bool isOut;
     private bool isDown;
+
 
 
     private void Awake()
@@ -30,12 +32,12 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isHit) 
+        if (!isHit)
         {
             //Check mouse input
             if (Input.GetMouseButtonDown(0))
             {
-               DragStart();
+                DragStart();
             }
             if (Input.GetMouseButton(0))
             {
@@ -44,25 +46,14 @@ public class BallController : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 DragRelease();
-            }
-
+                isHit = true;
+            }              
         }
+  
 
         //Debug.Log(isHit);
         Debug.Log(isDown);
         //Debug.Log(rb.velocity);
-
-
-        /*
-        if (!isHit)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                HitBall();
-                rb.AddForce(hitBall * speed, ForceMode2D.Impulse);
-                isHit = true;
-            }
-        }*/      
     }
 
     //Add force to the ball according to the drag position
@@ -85,23 +76,18 @@ public class BallController : MonoBehaviour
         Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * speed;
 
         rb.AddForce(clampedForce, ForceMode2D.Impulse);
-        isHit = true;
     }
-
-    /*private void HitBall()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector2 hitBall = new(0, 1);
-        rb.AddForce(hitBall * speed, ForceMode2D.Impulse);
-    }*/
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isHit)
+        if (collision.gameObject.name == "ShotCheck") 
         {
-            if (collision.gameObject.CompareTag("Bottom"))
-            {
-                isDown = true;
-            }
-        }        
+            isOut = true;
+        }
+        if (collision.gameObject.name == "DownCheck")
+        {
+            isDown = true;
+        }
     }
+
+
 }
