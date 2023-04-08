@@ -16,8 +16,8 @@ public class DragAndShoot : MonoBehaviour
 
     Transform direction;
     Rigidbody2D rb;
-    LineRenderer line;
     LineRenderer screenLine;
+    LineRenderer line;
 
     // Vectors // 
     Vector2 startPosition;
