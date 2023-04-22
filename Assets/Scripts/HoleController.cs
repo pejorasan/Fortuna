@@ -9,7 +9,7 @@ public class HoleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ball = GameObject.Find("Ball");
     }
 
     // Update is called once per frame
